@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rutas SYSTEM "rutas.dtd">
+<rutas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="rutas.xsd">
+
+  <!-- ===================== RUTA 1 ===================== -->
+  <ruta id="ruta1">
+    <nombre>Ruta del Acueducto y el Casco Histórico</nombre>
+    <tipo>Arquitectura y monumentos</tipo>
+    <transporte>A pie</transporte>
+    <fechaInicio opcional="si">2026-06-15</fechaInicio>
+    <horaInicio opcional="si">10:00</horaInicio>
+    <duracion>3 horas</duracion>
+    <agencia>Segovia Tour</agencia>
+    <descripcion>Ruta a pie por los principales monumentos del casco histórico de Segovia, comenzando en el imponente Acueducto Romano del siglo I d.C. y concluyendo en el Alcázar. El recorrido atraviesa la ciudad intramuros, sus calles medievales y sus iglesias románicas.</descripcion>
+    <personas>Apta para todos los públicos, incluidos niños y personas de tercera edad</personas>
+    <lugarInicio>Plaza del Azoguejo</lugarInicio>
+    <direccionInicio>Plaza del Azoguejo, s/n, 40001 Segovia</direccionInicio>
+    <coordenadas>
+      <longitud>-4.1188</longitud>
+      <latitud>40.9483</latitud>
+      <altitud>1005</altitud>
+    </coordenadas>
+    <referencias>
+      <referencia>https://www.turismodesegovia.com/</referencia>
+      <referencia>https://es.wikipedia.org/wiki/Acueducto_de_Segovia</referencia>
+      <referencia>https://www.patrimonionacional.es/real-sitio/alcazar-de-segovia</referencia>
+      <referencia>https://www.jcyl.es/web/es/turismo/segovia.html</referencia>
+    </referencias>
+    <recomendacion>9</recomendacion>
+    <hitos>
+      <hito>
+        <nombre>Acueducto Romano</nombre>
+        <descripcion>El acueducto romano de Segovia, construido en el siglo I d.C., tiene 167 arcos y 28,5 metros de altura máxima. Fue declarado Patrimonio de la Humanidad por la UNESCO en 1985. Está construido con sillares de granito sin argamasa.</descripcion>
+        <coordenadas>
+          <longitud>-4.1188</longitud>
+          <latitud>40.9483</latitud>
+          <altitud>1005</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="inicio">0</distancia>
+        <fotos>
+          <foto>acueducto1.jpg</foto>
+          <foto>acueducto2.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Plaza Mayor de Segovia</nombre>
+        <descripcion>El corazón histórico de la ciudad, rodeada de soportales y presidida por el Ayuntamiento. En ella confluyen las principales calles del casco histórico y alberga el Mercado Mayor medieval.</descripcion>
+        <coordenadas>
+          <longitud>-4.1213</longitud>
+          <latitud>40.9496</latitud>
+          <altitud>1000</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.5</distancia>
+        <fotos>
+          <foto>plaza-mayor1.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Catedral de Segovia</nombre>
+        <descripcion>La última catedral gótica construida en España (siglos XVI-XVII). Conocida como «La Dama de las Catedrales» por su esbeltez y elegancia. Su torre alcanza 88 metros de altura.</descripcion>
+        <coordenadas>
+          <longitud>-4.1228</longitud>
+          <latitud>40.9495</latitud>
+          <altitud>1000</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.2</distancia>
+        <fotos>
+          <foto>catedral1.jpg</foto>
+          <foto>catedral2.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Barrio Judío y Sinagoga Mayor</nombre>
+        <descripcion>El antiguo barrio hebreo de Segovia, uno de los más importantes de la Castilla medieval. La Sinagoga Mayor, reconvertida en iglesia de Corpus Christi, conserva su estructura original del siglo XIV.</descripcion>
+        <coordenadas>
+          <longitud>-4.1235</longitud>
+          <latitud>40.9490</latitud>
+          <altitud>998</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.15</distancia>
+        <fotos>
+          <foto>barrio-judio1.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Alcázar de Segovia</nombre>
+        <descripcion>Imponente castillo-palacio construido sobre un espolón rocoso en la confluencia de los ríos Eresma y Clamores. Sirvió de residencia a los reyes de Castilla y supuestamente inspiró el castillo de Cenicienta de Walt Disney. Actualmente alberga el Museo de Artillería.</descripcion>
+        <coordenadas>
+          <longitud>-4.1321</longitud>
+          <latitud>40.9519</latitud>
+          <altitud>1007</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.55</distancia>
+        <fotos>
+          <foto>alcazar1.jpg</foto>
+          <foto>alcazar2.jpg</foto>
+          <foto>alcazar3.jpg</foto>
+        </fotos>
+      </hito>
+    </hitos>
+    <planimetria>planimetria_ruta1.kml</planimetria>
+    <altimetria>altimetria_ruta1.svg</altimetria>
+  </ruta>
+
+  <!-- ===================== RUTA 2 ===================== -->
+  <ruta id="ruta2">
+    <nombre>Ruta de la Vera Cruz y el Valle del Eresma</nombre>
+    <tipo>Arquitectura y monumentos</tipo>
+    <transporte>A pie</transporte>
+    <fechaInicio opcional="si">2026-06-20</fechaInicio>
+    <horaInicio opcional="si">09:30</horaInicio>
+    <duracion>2 horas y media</duracion>
+    <agencia>Sin agencia</agencia>
+    <descripcion>Ruta a pie por el Valle del Eresma, a las faldas de la muralla segoviana. Se visitan la enigmática iglesia templaria de la Vera Cruz, el Monasterio del Parral, la Casa de la Moneda y el Puente de San Lorenzo.</descripcion>
+    <personas>Personas en buena forma física; el regreso incluye subida hasta la muralla</personas>
+    <lugarInicio>Puerta de San Andrés</lugarInicio>
+    <direccionInicio>Calle Socorro, 40003 Segovia</direccionInicio>
+    <coordenadas>
+      <longitud>-4.1270</longitud>
+      <latitud>40.9471</latitud>
+      <altitud>990</altitud>
+    </coordenadas>
+    <referencias>
+      <referencia>https://es.wikipedia.org/wiki/Iglesia_de_la_Vera_Cruz_(Segovia)</referencia>
+      <referencia>https://www.turismodesegovia.com/ver-segovia/monumentos/vera-cruz</referencia>
+      <referencia>https://es.wikipedia.org/wiki/Monasterio_de_El_Parral</referencia>
+    </referencias>
+    <recomendacion>8</recomendacion>
+    <hitos>
+      <hito>
+        <nombre>Puerta de San Andrés</nombre>
+        <descripcion>Puerta medieval de la muralla de Segovia, datada en el siglo XIII. Desde aquí se inicia el descenso al Valle del Eresma con magníficas vistas del Alcázar.</descripcion>
+        <coordenadas>
+          <longitud>-4.1270</longitud>
+          <latitud>40.9471</latitud>
+          <altitud>990</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="inicio">0</distancia>
+        <fotos>
+          <foto>puerta-san-andres.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Iglesia de la Vera Cruz</nombre>
+        <descripcion>Iglesia templaria de planta circular construida en el siglo XIII. Única en España por su diseño de doce lados. Albergaba un trozo de la Vera Cruz (Lignum Crucis) durante la Edad Media. Desde su campanario se obtienen las mejores vistas del Alcázar.</descripcion>
+        <coordenadas>
+          <longitud>-4.1355</longitud>
+          <latitud>40.9519</latitud>
+          <altitud>985</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.6</distancia>
+        <fotos>
+          <foto>vera-cruz1.jpg</foto>
+          <foto>vera-cruz2.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Monasterio de Santa María del Parral</nombre>
+        <descripcion>Monasterio jerónimo fundado en 1447 por el marqués de Villena. Conserva uno de los claustros góticos mejor preservados de Castilla. Los monjes jerónimos siguen habitando el monasterio.</descripcion>
+        <coordenadas>
+          <longitud>-4.1297</longitud>
+          <latitud>40.9535</latitud>
+          <altitud>975</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.8</distancia>
+        <fotos>
+          <foto>parral1.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Real Casa de la Moneda</nombre>
+        <descripcion>Primera fábrica de moneda con maquinaria hidráulica de Europa, construida en el siglo XVI por orden de Felipe II. Hoy es un museo que explica el proceso de acuñación de monedas de la época.</descripcion>
+        <coordenadas>
+          <longitud>-4.1238</longitud>
+          <latitud>40.9508</latitud>
+          <altitud>965</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.3</distancia>
+        <fotos>
+          <foto>casa-moneda1.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Puente de San Lorenzo</nombre>
+        <descripcion>Puente medieval sobre el río Eresma, de origen romano reformado en época medieval. Desde él se contempla una de las perspectivas más fotográficas del Alcázar y del Valle.</descripcion>
+        <coordenadas>
+          <longitud>-4.1201</longitud>
+          <latitud>40.9489</latitud>
+          <altitud>960</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.4</distancia>
+        <fotos>
+          <foto>puente-san-lorenzo.jpg</foto>
+        </fotos>
+      </hito>
+    </hitos>
+    <planimetria>planimetria_ruta2.kml</planimetria>
+    <altimetria>altimetria_ruta2.svg</altimetria>
+  </ruta>
+
+  <!-- ===================== RUTA 3 ===================== -->
+  <ruta id="ruta3">
+    <nombre>Ruta en Bicicleta: Segovia — La Granja — Riofrío</nombre>
+    <tipo>Paisajística y cultural</tipo>
+    <transporte>Bicicleta</transporte>
+    <duracion>1 día</duracion>
+    <agencia>Ciclosegovia</agencia>
+    <descripcion>Ruta ciclista circular desde Segovia capital hasta los Palacios Reales de Riofrío y La Granja de San Ildefonso, atravesando el Parque Natural de la Sierra de Guadarrama. Recorrido de 45 km aproximados con desnivel positivo de 350 m.</descripcion>
+    <personas>Personas en buena forma física; experiencia previa en ciclismo recomendable</personas>
+    <lugarInicio>Puerta de Madrid, Segovia</lugarInicio>
+    <direccionInicio>Paseo del Conde de Sepúlveda, 40006 Segovia</direccionInicio>
+    <coordenadas>
+      <longitud>-4.1150</longitud>
+      <latitud>40.9450</latitud>
+      <altitud>1000</altitud>
+    </coordenadas>
+    <referencias>
+      <referencia>https://www.patrimonionacional.es/real-sitio/real-sitio-de-la-granja-de-san-ildefonso</referencia>
+      <referencia>https://es.wikipedia.org/wiki/Palacio_de_Riofrío</referencia>
+      <referencia>https://www.sierraguadarrama.info/senderos-rutas/ciclismo</referencia>
+    </referencias>
+    <recomendacion>8</recomendacion>
+    <hitos>
+      <hito>
+        <nombre>Puerta de Madrid — Segovia</nombre>
+        <descripcion>Punto de partida de la ruta en bicicleta, junto a la antigua Puerta de Madrid. Se sale de la ciudad por la carretera CL-601 en dirección sur hacia Riofrío.</descripcion>
+        <coordenadas>
+          <longitud>-4.1150</longitud>
+          <latitud>40.9450</latitud>
+          <altitud>1000</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="inicio">0</distancia>
+        <fotos>
+          <foto>puerta-madrid.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Palacio Real de Riofrío</nombre>
+        <descripcion>Palacio de estilo italiano mandado construir por Isabel de Farnesio en 1751. Está rodeado por un coto de caza con cierva ciervos en libertad. Alberga el Museo de Caza Nacional.</descripcion>
+        <coordenadas>
+          <longitud>-4.0580</longitud>
+          <latitud>40.8975</latitud>
+          <altitud>900</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">12</distancia>
+        <fotos>
+          <foto>riofrio1.jpg</foto>
+          <foto>riofrio2.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Palacio Real de La Granja de San Ildefonso</nombre>
+        <descripcion>Residencia real del siglo XVIII mandada construir por Felipe V al estilo de Versalles. Rodeada de magníficos jardines barrocos con 26 fuentes monumentales. En verano funcionan las famosas «aguas» con espectáculo de fuentes.</descripcion>
+        <coordenadas>
+          <longitud>-4.0147</longitud>
+          <latitud>40.8978</latitud>
+          <altitud>1192</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">15</distancia>
+        <fotos>
+          <foto>lagranja-palacio1.jpg</foto>
+          <foto>lagranja-palacio2.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Jardines de La Granja</nombre>
+        <descripcion>Los jardines barrocos del Palacio Real de La Granja, diseñados por René Carlier a principios del siglo XVIII. Comprenden 146 hectáreas con fuentes monumentales, estanques y bosques de hayas y pinos.</descripcion>
+        <coordenadas>
+          <longitud>-4.0131</longitud>
+          <latitud>40.8971</latitud>
+          <altitud>1195</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.5</distancia>
+        <fotos>
+          <foto>jardines-lagranja.jpg</foto>
+        </fotos>
+      </hito>
+      <hito>
+        <nombre>Real Fábrica de Vidrios de La Granja</nombre>
+        <descripcion>Fundada por Felipe V en 1727, fue durante siglos la principal fábrica de vidrio artístico de España. Hoy alberga el Museo Nacional del Vidrio y un centro de producción artesanal que sigue elaborando piezas con técnicas históricas.</descripcion>
+        <coordenadas>
+          <longitud>-4.0138</longitud>
+          <latitud>40.8965</latitud>
+          <altitud>1190</altitud>
+        </coordenadas>
+        <distancia unidades="km" desde="anterior">0.3</distancia>
+        <fotos>
+          <foto>fabrica-vidrios.jpg</foto>
+        </fotos>
+      </hito>
+    </hitos>
+    <planimetria>planimetria_ruta3.kml</planimetria>
+    <altimetria>altimetria_ruta3.svg</altimetria>
+  </ruta>
+
+</rutas>

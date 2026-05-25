@@ -1,0 +1,60 @@
+<!-- =========================================================
+     rutas.dtd — Definición de tipo de documento para rutas.xml
+     Turismo Segovia — SEW 2025/26
+     ========================================================= -->
+
+<!ELEMENT rutas (ruta+)>
+
+<!ELEMENT ruta (nombre, tipo, transporte, fechaInicio?, horaInicio?,
+                duracion, agencia, descripcion, personas,
+                lugarInicio, direccionInicio, coordenadas,
+                referencias, recomendacion, hitos,
+                planimetria, altimetria)>
+<!ATTLIST ruta
+  id ID #REQUIRED>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT tipo (#PCDATA)>
+<!ELEMENT transporte (#PCDATA)>
+
+<!ELEMENT fechaInicio (#PCDATA)>
+<!ATTLIST fechaInicio
+  opcional (si|no) "no">
+
+<!ELEMENT horaInicio (#PCDATA)>
+<!ATTLIST horaInicio
+  opcional (si|no) "no">
+
+<!ELEMENT duracion (#PCDATA)>
+<!ELEMENT agencia (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT personas (#PCDATA)>
+<!ELEMENT lugarInicio (#PCDATA)>
+<!ELEMENT direccionInicio (#PCDATA)>
+
+<!ELEMENT coordenadas (longitud, latitud, altitud)>
+<!ELEMENT longitud (#PCDATA)>
+<!ELEMENT latitud (#PCDATA)>
+<!ELEMENT altitud (#PCDATA)>
+
+<!ELEMENT referencias (referencia+)>
+<!ELEMENT referencia (#PCDATA)>
+
+<!ELEMENT recomendacion (#PCDATA)>
+
+<!ELEMENT hitos (hito+)>
+<!ELEMENT hito (nombre, descripcion, coordenadas, distancia, fotos, videos?)>
+
+<!ELEMENT distancia (#PCDATA)>
+<!ATTLIST distancia
+  unidades CDATA #REQUIRED
+  desde    CDATA #REQUIRED>
+
+<!ELEMENT fotos (foto+)>
+<!ELEMENT foto (#PCDATA)>
+
+<!ELEMENT videos (video*)>
+<!ELEMENT video (#PCDATA)>
+
+<!ELEMENT planimetria (#PCDATA)>
+<!ELEMENT altimetria (#PCDATA)>

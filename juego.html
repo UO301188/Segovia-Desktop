@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Juego interactivo sobre Segovia: responde 10 preguntas y pon a prueba tus conocimientos turísticos.">
+  <title>Juego — Turismo en Segovia</title>
+  <link rel="stylesheet" href="estilo/estilo.css">
+  <link rel="stylesheet" href="estilo/layout.css">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Turismo en Segovia</a></h1>
+    <p>Descubre la magia de una ciudad Patrimonio de la Humanidad</p>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="gastronomia.html">Gastronomía</a></li>
+      <li><a href="rutas.html">Rutas</a></li>
+      <li><a href="meteorologia.html">Meteorología</a></li>
+      <li><a href="juego.html" class="activo" aria-current="page">Juego</a></li>
+      <li><a href="reservas.php">Reservas</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+    </ul>
+  </nav>
+
+  <nav aria-label="breadcrumb">
+    <ol>
+      <li><a href="index.html">Inicio</a></li>
+      <li aria-current="page">Juego</li>
+    </ol>
+  </nav>
+
+  <main>
+    <h2>¿Cuánto sabes sobre Segovia?</h2>
+    <p>Responde las 10 preguntas sobre los recursos turísticos de Segovia que has explorado en este sitio. ¡Obtendrás una puntuación de 0 a 10!</p>
+
+    <section data-componente="juego" aria-label="Juego de preguntas sobre Segovia">
+      <p data-estado="cargando">Iniciando juego…</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Turismo en Segovia — Proyecto SEW 2025/26</p>
+    <p>
+      <a href="https://www.turismodesegovia.com" target="_blank" rel="noopener">turismodesegovia.com</a>
+      &nbsp;|&nbsp;
+      <a href="ayuda.html">Ayuda</a>
+    </p>
+  </footer>
+
+  <script src="js/juego.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meteorología en Segovia: tiempo actual y previsión para los próximos 7 días en la capital.">
+  <title>Meteorología — Turismo en Segovia</title>
+  <link rel="stylesheet" href="estilo/estilo.css">
+  <link rel="stylesheet" href="estilo/layout.css">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Turismo en Segovia</a></h1>
+    <p>Descubre la magia de una ciudad Patrimonio de la Humanidad</p>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="gastronomia.html">Gastronomía</a></li>
+      <li><a href="rutas.html">Rutas</a></li>
+      <li><a href="meteorologia.html" class="activo" aria-current="page">Meteorología</a></li>
+      <li><a href="juego.html">Juego</a></li>
+      <li><a href="reservas.php">Reservas</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+    </ul>
+  </nav>
+
+  <nav aria-label="breadcrumb">
+    <ol>
+      <li><a href="index.html">Inicio</a></li>
+      <li aria-current="page">Meteorología</li>
+    </ol>
+  </nav>
+
+  <main>
+    <h2>Meteorología en Segovia</h2>
+    <p>Consulta el tiempo actual y la previsión para los próximos 7 días en la capital segoviana.</p>
+
+    <section data-componente="tiempo-actual" aria-label="Tiempo actual en Segovia">
+      <p data-estado="cargando">Cargando datos meteorológicos…</p>
+    </section>
+
+    <section data-componente="prevision" aria-label="Previsión 7 días">
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Turismo en Segovia — Proyecto SEW 2025/26</p>
+    <p>
+      <a href="https://www.turismodesegovia.com" target="_blank" rel="noopener">turismodesegovia.com</a>
+      &nbsp;|&nbsp;
+      <a href="ayuda.html">Ayuda</a>
+    </p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+  <script src="js/meteorologia.js"></script>
+
+</body>
+</html>

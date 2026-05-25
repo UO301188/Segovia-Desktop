@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Turismo en Segovia: descubre los recursos turísticos, gastronomía, rutas y monumentos de la provincia de Segovia.">
+  <title>Turismo en Segovia — Inicio</title>
+  <link rel="stylesheet" href="estilo/estilo.css">
+  <link rel="stylesheet" href="estilo/layout.css">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Turismo en Segovia</a></h1>
+    <p>Descubre la magia de una ciudad Patrimonio de la Humanidad</p>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <ul>
+      <li><a href="index.html" class="activo" aria-current="page">Inicio</a></li>
+      <li><a href="gastronomia.html">Gastronomía</a></li>
+      <li><a href="rutas.html">Rutas</a></li>
+      <li><a href="meteorologia.html">Meteorología</a></li>
+      <li><a href="juego.html">Juego</a></li>
+      <li><a href="reservas.php">Reservas</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+    </ul>
+  </nav>
+
+  <main data-pagina="inicio">
+
+    <section data-componente="carrusel" aria-label="Fotos de Segovia">
+      <!-- El carrusel se genera dinámicamente por js/index.js -->
+      <p data-estado="cargando">Cargando carrusel…</p>
+    </section>
+
+    <section>
+      <h2>Bienvenido a Segovia</h2>
+      <p>
+        Segovia es una de las ciudades más emblemáticas de Castilla y León. Su legado romano,
+        medieval y renacentista la convierte en un destino único, declarado <strong>Patrimonio
+        de la Humanidad</strong> por la UNESCO desde 1985. Desde el impresionante Acueducto
+        Romano hasta el imponente Alcázar, pasando por su casco histórico repleto de iglesias
+        románicas y conventos, Segovia ofrece una experiencia cultural incomparable.
+      </p>
+      <p>
+        La provincia también brinda paisajes naturales de gran belleza: la Sierra de Guadarrama,
+        el Parque Natural de las Hoces del Río Riaza y los bosques de Riofrío son solo algunos
+        de sus tesoros naturales.
+      </p>
+    </section>
+
+    <section data-componente="noticias" aria-label="Noticias sobre Segovia">
+      <h2>Últimas noticias</h2>
+      <p data-estado="cargando">Cargando noticias…</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Turismo en Segovia — Proyecto SEW 2025/26</p>
+    <p>
+      <a href="https://www.turismodesegovia.com" target="_blank" rel="noopener">turismodesegovia.com</a>
+      &nbsp;|&nbsp;
+      <a href="ayuda.html">Ayuda</a>
+    </p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
+
+</body>
+</html>

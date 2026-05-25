@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rutas turísticas por Segovia: a pie, en bicicleta y más, con mapas y altimetría de cada recorrido.">
+  <title>Rutas — Turismo en Segovia</title>
+  <link rel="stylesheet" href="estilo/estilo.css">
+  <link rel="stylesheet" href="estilo/layout.css">
+  <!-- Leaflet CSS (biblioteca de cartografía) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="anonymous">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Turismo en Segovia</a></h1>
+    <p>Descubre la magia de una ciudad Patrimonio de la Humanidad</p>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="gastronomia.html">Gastronomía</a></li>
+      <li><a href="rutas.html" class="activo" aria-current="page">Rutas</a></li>
+      <li><a href="meteorologia.html">Meteorología</a></li>
+      <li><a href="juego.html">Juego</a></li>
+      <li><a href="reservas.php">Reservas</a></li>
+      <li><a href="ayuda.html">Ayuda</a></li>
+    </ul>
+  </nav>
+
+  <nav aria-label="breadcrumb">
+    <ol>
+      <li><a href="index.html">Inicio</a></li>
+      <li aria-current="page">Rutas</li>
+    </ol>
+  </nav>
+
+  <main>
+    <h2>Rutas turísticas por Segovia</h2>
+    <p>Explora la provincia de Segovia a través de sus rutas más emblemáticas. Cada ruta incluye mapa interactivo y perfil de altimetría.</p>
+
+    <section aria-label="Listado de rutas turísticas" id="contenedor-rutas">
+      <p data-estado="cargando">Cargando rutas turísticas…</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Turismo en Segovia — Proyecto SEW 2025/26</p>
+    <p>
+      <a href="https://www.turismodesegovia.com" target="_blank" rel="noopener">turismodesegovia.com</a>
+      &nbsp;|&nbsp;
+      <a href="ayuda.html">Ayuda</a>
+    </p>
+  </footer>
+
+  <!-- Leaflet JS (biblioteca de cartografía para OpenStreetMap) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/TDo="
+          crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+  <script src="js/rutas.js"></script>
+
+</body>
+</html>
