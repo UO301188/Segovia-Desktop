@@ -175,6 +175,7 @@ class VisorRutas {
     return $sec;
   }
 
+  /*
   _inicializarMapa(ruta, idx) {
     if (!window.L) return;
 
@@ -232,8 +233,94 @@ class VisorRutas {
     setTimeout(() => {
       mapa.invalidateSize();
     }, 300);
-  }
+  }*/
 
+    _inicializarMapa(ruta, idx) {
+    if (!window.L) return;
+
+    const mapaId = `mapa-${ruta.id}`;
+    const el = document.getElementById(mapaId);
+    if (!el) return;
+
+    // Crear instancia de mapa Leaflet
+    const mapa = L.map(mapaId, { scrollWheelZoom: false }).setView(
+      [ruta.inicioLat, ruta.inicioLon], 14
+    );
+
+    // Cargar mapa base de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(mapa);
+
+    // --- CARGA NATIVA DEL KML CON JQUERY (Sin Omnivore) ---
+    if (ruta.planimetria) {
+      $.ajax({
+        url: `xml/${ruta.planimetria}`,
+        dataType: 'xml',
+        success: function(kmlDoc) {
+          const latlngs = [];
+          
+          // Buscar la línea de la ruta en el KML generado por Python
+          $(kmlDoc).find('LineString coordinates').each(function() {
+            const coordsTexto = $(this).text().trim().split('\n');
+            
+            coordsTexto.forEach(linea => {
+              const partes = linea.trim().split(',');
+              if (partes.length >= 2) {
+                // Leaflet usa [Latitud, Longitud], el KML usa [Longitud, Latitud]
+                const lon = parseFloat(partes[0]);
+                const lat = parseFloat(partes[1]);
+                if (!isNaN(lat) && !isNaN(lon)) {
+                  latlngs.push([lat, lon]);
+                }
+              }
+            });
+          });
+
+          // Dibujar la polilínea en el mapa si hay coordenadas
+          if (latlngs.length > 0) {
+            const polyline = L.polyline(latlngs, {color: '#8B1A1A', weight: 4}).addTo(mapa);
+            // Ajustar el zoom automáticamente para encuadrar la ruta
+            mapa.fitBounds(polyline.getBounds(), { padding: [30, 30] });
+          }
+        },
+        error: function() {
+          console.error(`No se pudo cargar el KML: xml/${ruta.planimetria}`);
+        }
+      });
+    }
+
+    // Marcador de inicio de la ruta
+    const iconoInicio = L.divIcon({
+      html: '<span aria-hidden="true">🚩</span>',
+      className: '',
+      iconAnchor: [12, 12]
+    });
+    L.marker([ruta.inicioLat, ruta.inicioLon], { icon: iconoInicio })
+      .addTo(mapa)
+      .bindPopup(`<strong>Inicio:</strong> ${ruta.lugarInicio}`);
+
+    // Marcadores para el resto de hitos (opcional, si quieres usar los del XML en lugar de leer los puntos del KML)
+    ruta.hitos.forEach(hito => {
+      if (!isNaN(hito.lat) && !isNaN(hito.lon)) {
+        const iconoHito = L.divIcon({
+          html: '<span aria-hidden="true">📍</span>',
+          className: '',
+          iconAnchor: [8, 8]
+        });
+        L.marker([hito.lat, hito.lon], { icon: iconoHito })
+          .addTo(mapa)
+          .bindPopup(`<strong>${hito.nombre}</strong><br>${hito.descripcion.substring(0, 100)}…`);
+      }
+    });
+
+    this.mapas[ruta.id] = mapa;
+
+    setTimeout(() => {
+      mapa.invalidateSize();
+    }, 300);
+  }
   
 }
 

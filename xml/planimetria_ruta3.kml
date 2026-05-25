@@ -16,7 +16,7 @@
         <tessellate>1</tessellate>
         <coordinates>
           -4.1150,40.9450,1000
-          -4.0580,40.8975,900
+          -4.1003,40.8911,900
           -4.0147,40.8978,1192
           -4.0131,40.8971,1195
           -4.0138,40.8965,1190
@@ -34,9 +34,9 @@
 
     <Placemark>
       <name>Palacio Real de Riofrío</name>
-      <description>Palacio de estilo italiano mandado construir por Isabel de Farnesio en 1751. Está rodeado por un coto de caza con cierva ciervos en libertad. Alberga el Museo de Caza Nacional.</description>
+      <description>Palacio de estilo italiano mandado construir por Isabel de Farnesio en 1751. Está rodeado por un coto de caza con ciervos en libertad. Alberga el Museo de Caza Nacional.</description>
       <Point>
-        <coordinates>-4.0580,40.8975,0</coordinates>
+        <coordinates>-4.1003,40.8911,0</coordinates>
       </Point>
     </Placemark>
 

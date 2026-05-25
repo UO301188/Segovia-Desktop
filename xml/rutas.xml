@@ -237,10 +237,10 @@
       </hito>
       <hito>
         <nombre>Palacio Real de Riofrío</nombre>
-        <descripcion>Palacio de estilo italiano mandado construir por Isabel de Farnesio en 1751. Está rodeado por un coto de caza con cierva ciervos en libertad. Alberga el Museo de Caza Nacional.</descripcion>
+        <descripcion>Palacio de estilo italiano mandado construir por Isabel de Farnesio en 1751. Está rodeado por un coto de caza con ciervos en libertad. Alberga el Museo de Caza Nacional.</descripcion>
         <coordenadas>
-          <longitud>-4.0580</longitud>
-          <latitud>40.8975</latitud>
+          <longitud>-4.1003</longitud>
+          <latitud>40.8911</latitud>
           <altitud>900</altitud>
         </coordenadas>
         <distancia unidades="km" desde="anterior">12</distancia>

@@ -211,6 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <ul>
                         <li><strong>Plazas totales:</strong> <?php echo $res['plazas']; ?></li>
                         <li><strong>Inicio:</strong> <?php echo $res['fecha_inicio']; ?></li>
+                        <li><strong>Finalización:</strong> <?php echo $res['fecha_fin']; ?></li>
                         <li><strong>Precio por persona:</strong> <?php echo $res['precio']; ?> €</li>
                     </ul>
                     <form method="POST" action="reservas.php">
