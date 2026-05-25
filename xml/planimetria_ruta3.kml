@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Planimetría Ruta en Bicicleta: Segovia — La Granja — Riofrío</name>
+    <Style id="lineaRoja">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Ruta</name>
+      <styleUrl>#lineaRoja</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -4.1150,40.9450,1000
+          -4.0580,40.8975,900
+          -4.0147,40.8978,1192
+          -4.0131,40.8971,1195
+          -4.0138,40.8965,1190
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+    <Placemark>
+      <name>Puerta de Madrid — Segovia</name>
+      <description>Punto de partida de la ruta en bicicleta, junto a la antigua Puerta de Madrid. Se sale de la ciudad por la carretera CL-601 en dirección sur hacia Riofrío.</description>
+      <Point>
+        <coordinates>-4.1150,40.9450,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Palacio Real de Riofrío</name>
+      <description>Palacio de estilo italiano mandado construir por Isabel de Farnesio en 1751. Está rodeado por un coto de caza con cierva ciervos en libertad. Alberga el Museo de Caza Nacional.</description>
+      <Point>
+        <coordinates>-4.0580,40.8975,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Palacio Real de La Granja de San Ildefonso</name>
+      <description>Residencia real del siglo XVIII mandada construir por Felipe V al estilo de Versalles. Rodeada de magníficos jardines barrocos con 26 fuentes monumentales. En verano funcionan las famosas «aguas» con espectáculo de fuentes.</description>
+      <Point>
+        <coordinates>-4.0147,40.8978,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Jardines de La Granja</name>
+      <description>Los jardines barrocos del Palacio Real de La Granja, diseñados por René Carlier a principios del siglo XVIII. Comprenden 146 hectáreas con fuentes monumentales, estanques y bosques de hayas y pinos.</description>
+      <Point>
+        <coordinates>-4.0131,40.8971,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Real Fábrica de Vidrios de La Granja</name>
+      <description>Fundada por Felipe V en 1727, fue durante siglos la principal fábrica de vidrio artístico de España. Hoy alberga el Museo Nacional del Vidrio y un centro de producción artesanal que sigue elaborando piezas con técnicas históricas.</description>
+      <Point>
+        <coordinates>-4.0138,40.8965,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

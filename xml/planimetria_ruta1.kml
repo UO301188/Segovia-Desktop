@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Planimetría Ruta del Acueducto y el Casco Histórico</name>
+    <Style id="lineaRoja">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Ruta</name>
+      <styleUrl>#lineaRoja</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -4.1188,40.9483,1005
+          -4.1213,40.9496,1000
+          -4.1228,40.9495,1000
+          -4.1235,40.9490,998
+          -4.1321,40.9519,1007
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+    <Placemark>
+      <name>Acueducto Romano</name>
+      <description>El acueducto romano de Segovia, construido en el siglo I d.C., tiene 167 arcos y 28,5 metros de altura máxima. Fue declarado Patrimonio de la Humanidad por la UNESCO en 1985. Está construido con sillares de granito sin argamasa.</description>
+      <Point>
+        <coordinates>-4.1188,40.9483,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Plaza Mayor de Segovia</name>
+      <description>El corazón histórico de la ciudad, rodeada de soportales y presidida por el Ayuntamiento. En ella confluyen las principales calles del casco histórico y alberga el Mercado Mayor medieval.</description>
+      <Point>
+        <coordinates>-4.1213,40.9496,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Catedral de Segovia</name>
+      <description>La última catedral gótica construida en España (siglos XVI-XVII). Conocida como «La Dama de las Catedrales» por su esbeltez y elegancia. Su torre alcanza 88 metros de altura.</description>
+      <Point>
+        <coordinates>-4.1228,40.9495,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Barrio Judío y Sinagoga Mayor</name>
+      <description>El antiguo barrio hebreo de Segovia, uno de los más importantes de la Castilla medieval. La Sinagoga Mayor, reconvertida en iglesia de Corpus Christi, conserva su estructura original del siglo XIV.</description>
+      <Point>
+        <coordinates>-4.1235,40.9490,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Alcázar de Segovia</name>
+      <description>Imponente castillo-palacio construido sobre un espolón rocoso en la confluencia de los ríos Eresma y Clamores. Sirvió de residencia a los reyes de Castilla y supuestamente inspiró el castillo de Cenicienta de Walt Disney. Actualmente alberga el Museo de Artillería.</description>
+      <Point>
+        <coordinates>-4.1321,40.9519,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

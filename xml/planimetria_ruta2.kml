@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Planimetría Ruta de la Vera Cruz y el Valle del Eresma</name>
+    <Style id="lineaRoja">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Ruta</name>
+      <styleUrl>#lineaRoja</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -4.1270,40.9471,990
+          -4.1355,40.9519,985
+          -4.1297,40.9535,975
+          -4.1238,40.9508,965
+          -4.1201,40.9489,960
+        </coordinates>
+      </LineString>
+    </Placemark>
+
+    <Placemark>
+      <name>Puerta de San Andrés</name>
+      <description>Puerta medieval de la muralla de Segovia, datada en el siglo XIII. Desde aquí se inicia el descenso al Valle del Eresma con magníficas vistas del Alcázar.</description>
+      <Point>
+        <coordinates>-4.1270,40.9471,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Iglesia de la Vera Cruz</name>
+      <description>Iglesia templaria de planta circular construida en el siglo XIII. Única en España por su diseño de doce lados. Albergaba un trozo de la Vera Cruz (Lignum Crucis) durante la Edad Media. Desde su campanario se obtienen las mejores vistas del Alcázar.</description>
+      <Point>
+        <coordinates>-4.1355,40.9519,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Monasterio de Santa María del Parral</name>
+      <description>Monasterio jerónimo fundado en 1447 por el marqués de Villena. Conserva uno de los claustros góticos mejor preservados de Castilla. Los monjes jerónimos siguen habitando el monasterio.</description>
+      <Point>
+        <coordinates>-4.1297,40.9535,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Real Casa de la Moneda</name>
+      <description>Primera fábrica de moneda con maquinaria hidráulica de Europa, construida en el siglo XVI por orden de Felipe II. Hoy es un museo que explica el proceso de acuñación de monedas de la época.</description>
+      <Point>
+        <coordinates>-4.1238,40.9508,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Puente de San Lorenzo</name>
+      <description>Puente medieval sobre el río Eresma, de origen romano reformado en época medieval. Desde él se contempla una de las perspectivas más fotográficas del Alcázar y del Valle.</description>
+      <Point>
+        <coordinates>-4.1201,40.9489,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

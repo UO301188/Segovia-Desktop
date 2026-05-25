@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#F8F4EC"/>
+    <line x1="50" y1="350" x2="750" y2="350" stroke="black" stroke-width="2"/>
+    <line x1="50" y1="50" x2="50" y2="350" stroke="black" stroke-width="2"/>
+    
+    <text x="400.0" y="385" font-family="Arial" font-size="14" text-anchor="middle">Distancia Total (27800.0 m)</text>
+    <text x="15" y="200.0" font-family="Arial" font-size="14" transform="rotate(-90 15,200.0)" text-anchor="middle">Altitud (m)</text>
+    
+    <text x="45" y="55" font-family="Arial" font-size="12" text-anchor="end">1195.0m</text>
+    <text x="45" y="350" font-family="Arial" font-size="12" text-anchor="end">900.0m</text>
+
+    <polyline points="50,350 50.0,248.3050847457627 352.158273381295,350.0 729.8561151079136,53.05084745762713 742.4460431654676,50.0 750.0,55.08474576271186  750,350" fill="#D4C5A0" stroke="#8B1A1A" stroke-width="3" opacity="0.7"/>
+</svg>
