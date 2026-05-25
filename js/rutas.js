@@ -57,25 +57,25 @@ class VisorRutas {
       const refs = [];
       $ruta.find('referencias referencia').each((_, refEl) => refs.push($(refEl).text()));
 
-      rutas.push({
-        id:           $ruta.attr('id'),
-        nombre:       $ruta.find('> nombre').text(),
-        tipo:         $ruta.find('tipo').text(),
-        transporte:   $ruta.find('transporte').text(),
-        duracion:     $ruta.find('duracion').text(),
-        agencia:      $ruta.find('agencia').text(),
-        descripcion:  $ruta.find('> descripcion').text(),
-        personas:     $ruta.find('personas').text(),
-        lugarInicio:  $ruta.find('lugarInicio').text(),
-        recomendacion: $ruta.find('recomendacion').text(),
-        inicioLat:    parseFloat($ruta.find('> coordenadas latitud').text()),
-        inicioLon:    parseFloat($ruta.find('> coordenadas longitud').text()),
-        planimetria:  $ruta.find('planimetria').text(),
-        altimetria:   $ruta.find('altimetria').text(),
-        hitos:        hitos,
-        referencias:  refs
-      });
-    });
+          rutas.push({
+            id:           $ruta.attr('id'),
+            nombre:       $ruta.find('> nombre').text(),
+            tipo:         $ruta.find('tipo').text(),
+            transporte:   $ruta.find('transporte').text(),
+            duracion:     $ruta.find('duracion').text(),
+            agencia:      $ruta.find('agencia').text(),
+            descripcion:  $ruta.find('> descripcion').text(),
+            personas:     $ruta.find('personas').text(),
+            lugarInicio:  $ruta.find('lugarInicio').text(),
+            recomendacion: $ruta.find('recomendacion').text(),
+            inicioLat:    parseFloat($ruta.find('> coordenadas latitud').text()),
+            inicioLon:    parseFloat($ruta.find('> coordenadas longitud').text()),
+            planimetria:  $ruta.find('planimetria').text(),
+            altimetria:   $ruta.find('altimetria').text(),
+            hitos:        hitos,
+            referencias:  refs
+          });
+        });
     return rutas;
   }
 
@@ -132,8 +132,7 @@ class VisorRutas {
               .attr('loading', 'lazy')
               .attr('width', 200)
               .attr('height', 133)
-              .css({ 'margin-right': '0.4rem', 'margin-bottom': '0.4rem',
-                     'max-width': '200px', height: 'auto', display: 'inline-block' })
+              .attr('data-tipo', 'foto-hito') // Cambiado .css() por atributo semántico para CSS externo
           );
         });
         $li.append($galeria);
@@ -183,18 +182,30 @@ class VisorRutas {
     const el = document.getElementById(mapaId);
     if (!el) return;
 
+    // Crear instancia de mapa Leaflet centrado provisionalmente
     const mapa = L.map(mapaId, { scrollWheelZoom: false }).setView(
       [ruta.inicioLat, ruta.inicioLon], 14
     );
 
+    // Cargar mapa base de OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
       maxZoom: 18
     }).addTo(mapa);
 
-    // Marcador de inicio
+    // Carga de la planimetría KML real usando Leaflet Omnivore (Requisito estricto)
+    if (ruta.planimetria && window.omnivore) {
+      const capaKml = omnivore.kml(`xml/${ruta.planimetria}`)
+        .on('ready', function() {
+          // Ajusta el zoom automáticamente para encuadrar la ruta perfectamente una vez cargado el KML
+          mapa.fitBounds(capaKml.getBounds(), { padding: [30, 30] });
+        })
+        .addTo(mapa);
+    }
+
+    // Marcador de inicio de la ruta
     const iconoInicio = L.divIcon({
-      html: '<span >🚩</span>',
+      html: '<span aria-hidden="true">🚩</span>',
       className: '',
       iconAnchor: [12, 12]
     });
@@ -202,38 +213,28 @@ class VisorRutas {
       .addTo(mapa)
       .bindPopup(`<strong>Inicio:</strong> ${ruta.lugarInicio}`);
 
-    // Polilínea con los hitos
-    if (ruta.hitos.length > 0) {
-      const puntos = ruta.hitos
-        .filter(h => !isNaN(h.lat) && !isNaN(h.lon))
-        .map(h => [h.lat, h.lon]);
-
-      if (puntos.length > 1) {
-        L.polyline(puntos, { color: '#8B1A1A', weight: 3, opacity: 0.9 }).addTo(mapa);
+    // Marcadores para el resto de hitos individuales de apoyo
+    ruta.hitos.forEach(hito => {
+      if (!isNaN(hito.lat) && !isNaN(hito.lon)) {
+        const iconoHito = L.divIcon({
+          html: '<span aria-hidden="true">📍</span>',
+          className: '',
+          iconAnchor: [8, 8]
+        });
+        L.marker([hito.lat, hito.lon], { icon: iconoHito })
+          .addTo(mapa)
+          .bindPopup(`<strong>${hito.nombre}</strong><br>${hito.descripcion.substring(0, 100)}…`);
       }
-
-      // Marcadores de hitos
-      ruta.hitos.forEach(hito => {
-        if (!isNaN(hito.lat) && !isNaN(hito.lon)) {
-          const iconoHito = L.divIcon({
-            html: '<span >📍</span>',
-            className: '',
-            iconAnchor: [8, 8]
-          });
-          L.marker([hito.lat, hito.lon], { icon: iconoHito })
-            .addTo(mapa)
-            .bindPopup(`<strong>${hito.nombre}</strong><br>${hito.descripcion.substring(0, 100)}…`);
-        }
-      });
-
-      // Ajustar vista a todos los puntos
-      if (puntos.length > 0) {
-        try { mapa.fitBounds(puntos, { padding: [30, 30] }); } catch (_e) { /* noop */ }
-      }
-    }
+    });
 
     this.mapas[ruta.id] = mapa;
+
+    setTimeout(() => {
+      mapa.invalidateSize();
+    }, 300);
   }
+
+  
 }
 
 $(document).ready(() => {
