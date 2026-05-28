@@ -75,7 +75,7 @@ class CentralReservas {
         $stmt2->bind_param("iiid", $id_reserva, $id_recurso, $personas, $subtotal);
         $stmt2->execute();
         
-        return "Reserva confirmada con éxito. Ya puedes verla en tu listado.";
+        return "Reserva confirmada. Presupuesto total: " . $subtotal . " €";
     }
 
     public function obtenerMisReservas() {
@@ -101,10 +101,6 @@ class CentralReservas {
 $app = new CentralReservas();
 $mensaje = "";
 
-// Variables para el paso intermedio de confirmación
-$mostrarConfirmacion = false;
-$datosPresupuesto = [];
-
 // Manejador de peticiones
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['accion'])) {
@@ -114,21 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!$app->iniciarSesion($_POST['email'], $_POST['password'])) {
                 $mensaje = "Credenciales incorrectas.";
             }
-        } elseif ($_POST['accion'] == 'presupuestar' && isset($_SESSION['user_id'])) {
-            // PASO 1: Calcular presupuesto sin guardar en DB
-            $recurso = $app->obtenerRecursoPorId($_POST['id_recurso']);
-            if ($recurso) {
-                $subtotal = $recurso['precio'] * $_POST['personas'];
-                $datosPresupuesto = [
-                    'id_recurso' => $_POST['id_recurso'],
-                    'nombre' => $recurso['nombre'],
-                    'personas' => $_POST['personas'],
-                    'subtotal' => $subtotal
-                ];
-                $mostrarConfirmacion = true;
-            }
-        } elseif ($_POST['accion'] == 'confirmar' && isset($_SESSION['user_id'])) {
-            // PASO 2: Guardar reserva definitiva
+        } elseif ($_POST['accion'] == 'reservar' && isset($_SESSION['user_id'])) {
             $mensaje = $app->confirmarReserva($_POST['id_recurso'], $_POST['personas']);
         } elseif ($_POST['accion'] == 'anular' && isset($_SESSION['user_id'])) {
             $app->anularReserva($_POST['id_reserva']);
@@ -164,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <li><a href="rutas.html">Rutas</a></li>
       <li><a href="meteorologia.html">Meteorología</a></li>
       <li><a href="juego.html">Juego</a></li>
-      <li><a href="reservas.php" aria-current="page">Reservas</a></li>
+      <li><a href="reservas.php" class="activo" aria-current="page">Reservas</a></li>
       <li><a href="ayuda.html">Ayuda</a></li>
     </ul>
   </nav>
@@ -176,11 +158,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </ol>
   </nav>
 
-  <main>
+  <main data-pagina="reservas">
     <h2>Central de Reservas Turísticas</h2>
     
     <?php if(!empty($mensaje)): ?>
-        <p role="alert">
+        <p role="alert" data-tipo="info">
             <?php echo htmlspecialchars($mensaje); ?>
         </p>
     <?php endif; ?>
@@ -209,58 +191,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </article>
     
     <?php else: ?>
-        <header>
-            <p>Bienvenido/a, <strong><?php echo htmlspecialchars($_SESSION['user_nombre']); ?></strong>.</p>
-            <form method="POST">
-            <input type="hidden" name="accion" value="logout">
-            <button type="submit">Cerrar sesión</button>
-            </form>
-        </header>
+        <p>Bienvenido/a, <strong><?php echo htmlspecialchars($_SESSION['user_nombre']); ?></strong>. 
+           <form method="POST" data-tipo="inline">
+               <input type="hidden" name="accion" value="logout">
+               <button type="submit" data-tamano="pequeno">Cerrar sesión</button>
+           </form>
+        </p>
 
-        <?php if ($mostrarConfirmacion): ?>
-            <article>
-                <h3>Confirmación de Presupuesto</h3>
-                <p>Estás a punto de reservar <strong><?php echo htmlspecialchars($datosPresupuesto['nombre']); ?></strong> para <strong><?php echo $datosPresupuesto['personas']; ?></strong> persona(s).</p>
-                <p>El precio total asciende a: <strong><?php echo $datosPresupuesto['subtotal']; ?> €</strong>.</p>
-                <form method="POST" action="reservas.php">
-                    <input type="hidden" name="accion" value="confirmar">
-                    <input type="hidden" name="id_recurso" value="<?php echo $datosPresupuesto['id_recurso']; ?>">
-                    <input type="hidden" name="personas" value="<?php echo $datosPresupuesto['personas']; ?>">
-                    <button type="submit">Confirmar Reserva Definitiva</button>
-                    <a href="reservas.php"><button type="button">Cancelar</button></a>
-                </form>
-            </article>
-        <?php else: ?>
-
-            <h3>Recursos Disponibles para Reservar</h3>
-            <div>
-                <?php 
-                $recursos = $app->obtenerRecursos();
-                if ($recursos && $recursos->num_rows > 0): 
-                    while ($res = $recursos->fetch_assoc()):
-                ?>
-                    <article>
-                        <h4><?php echo htmlspecialchars($res['nombre']); ?></h4>
-                        <p><?php echo htmlspecialchars($res['descripcion']); ?></p>
-                        <ul>
-                            <li><strong>Plazas totales:</strong> <?php echo $res['plazas']; ?></li>
-                            <li><strong>Inicio:</strong> <?php echo $res['fecha_inicio']; ?></li>
-                            <li><strong>Finalización:</strong> <?php echo $res['fecha_fin']; ?></li>
-                            <li><strong>Precio por persona:</strong> <?php echo $res['precio']; ?> €</li>
-                        </ul>
-                        <form method="POST" action="reservas.php">
-                            <input type="hidden" name="accion" value="presupuestar">
-                            <input type="hidden" name="id_recurso" value="<?php echo $res['id']; ?>">
-                            <label>Personas: <input type="number" name="personas" min="1" max="<?php echo $res['plazas']; ?>" value="1" required></label>
-                            <button type="submit">Generar Presupuesto</button>
-                        </form>
-                    </article>
-                <?php 
-                    endwhile;
-                endif; 
-                ?>
-            </div>
-        <?php endif; ?>
+        <h3>Recursos Disponibles para Reservar</h3>
+        <div data-componente="recursos-grid">
+            <?php 
+            $recursos = $app->obtenerRecursos();
+            if ($recursos && $recursos->num_rows > 0): 
+                while ($res = $recursos->fetch_assoc()):
+            ?>
+                <article>
+                    <h4><?php echo htmlspecialchars($res['nombre']); ?></h4>
+                    <p><?php echo htmlspecialchars($res['descripcion']); ?></p>
+                    <ul>
+                        <li><strong>Plazas totales:</strong> <?php echo $res['plazas']; ?></li>
+                        <li><strong>Inicio:</strong> <?php echo $res['fecha_inicio']; ?></li>
+                        <li><strong>Precio por persona:</strong> <?php echo $res['precio']; ?> €</li>
+                    </ul>
+                    <form method="POST" action="reservas.php">
+                        <input type="hidden" name="accion" value="reservar">
+                        <input type="hidden" name="id_recurso" value="<?php echo $res['id']; ?>">
+                        <label>Personas: <input type="number" name="personas" min="1" max="<?php echo $res['plazas']; ?>" value="1" data-tipo="cantidad" required></label>
+                        <button type="submit">Calcular Presupuesto y Reservar</button>
+                    </form>
+                </article>
+            <?php 
+                endwhile;
+            endif; 
+            ?>
+        </div>
 
         <h3>Mis Reservas</h3>
         <table>
@@ -289,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <form method="POST" action="reservas.php">
                             <input type="hidden" name="accion" value="anular">
                             <input type="hidden" name="id_reserva" value="<?php echo $mres['id']; ?>">
-                            <button type="submit">Anular</button>
+                            <button type="submit" data-accion="peligro">Anular</button>
                         </form>
                         <?php endif; ?>
                     </td>

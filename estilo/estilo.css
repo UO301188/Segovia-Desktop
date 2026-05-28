@@ -1,12 +1,9 @@
 /* =========================================================
-   estilo/estilo.css — Estilos generales (Simplificado)
-   Turismo Segovia — SEW 2025/26
+   estilo/estilo.css — Estilos generales (Puros)
    ========================================================= */
 
-/* Especificidad: 0,0,1 */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Especificidad: 0,0,1 */
 body {
   font-family: Georgia, 'Times New Roman', serif;
   color: #2C2C2C;
@@ -14,197 +11,112 @@ body {
   line-height: 1.6;
 }
 
-/* Especificidad: 0,0,1 */
 header { background-color: #8B1A1A; color: #FFFFFF; text-align: center; padding: 1.5rem; }
-/* ADVERTENCIA HERENCIA: color #FFFFFF heredado en hijos de header. Contraste AAA correcto sobre #8B1A1A */
-
-/* Especificidad: 0,0,2 */
 header h1 { font-size: 2.2rem; margin-bottom: 0.3rem; }
-
-/* Especificidad: 0,0,3 */
 header h1 a { color: inherit; background-color: transparent; text-decoration: none; }
 
-/* Especificidad: 0,0,1 */
-nav { background-color: #6B1414; color: inherit; }
-
-/* Especificidad: 0,0,2 */
-nav ul { list-style: none; }
-
-/* Especificidad: 0,0,4 */
-nav ul li a {
+/* Navegación principal */
+nav:first-of-type { background-color: #6B1414; color: inherit; }
+nav:first-of-type ul { list-style: none; }
+nav:first-of-type ul li a {
   display: block; color: #FFFFFF; background-color: transparent; text-decoration: none; padding: 0.8rem 1rem;
   font-family: Arial, sans-serif; font-weight: bold; text-transform: uppercase;
 }
+nav:first-of-type ul li a:hover { background-color: #8B1A1A; color: inherit; }
+/* Elemento activo mediante atributo semántico estándar (Accesibilidad) */
+nav:first-of-type ul li a[aria-current="page"] { background-color: #F8F4EC; color: #8B1A1A; }
 
-/* Especificidad: 0,1,4 */
-nav ul li a:hover { background-color: #8B1A1A; color: inherit; }
+/* Breadcrumb (Segunda navegación en el flujo del DOM) */
+nav:nth-of-type(2) { background-color: #D4C5A0; color: inherit; padding: 0.5rem 2rem; font-family: Arial, sans-serif; }
+nav:nth-of-type(2) ol { list-style: none; display: flex; gap: 0.5rem; }
+nav:nth-of-type(2) ol li a { color: #8B1A1A; background-color: transparent; text-decoration: none; font-weight: bold; }
 
-/* Especificidad: 0,1,4 */
-/* Excepción permitida por el enunciado para el menú */
-nav ul li a.activo { background-color: #F8F4EC; color: #8B1A1A; }
-
-/* Especificidad: 0,1,1 */
-nav[aria-label="breadcrumb"] { background-color: #D4C5A0; color: inherit; padding: 0.5rem 2rem; font-family: Arial, sans-serif; }
-/* ADVERTENCIA HERENCIA: color #2C2C2C heredado. Contraste AAA correcto sobre #D4C5A0 */
-
-/* Especificidad: 0,1,2 */
-nav[aria-label="breadcrumb"] ol { list-style: none; display: flex; gap: 0.5rem; }
-
-/* Especificidad: 0,1,4 */
-nav[aria-label="breadcrumb"] ol li a { color: #8B1A1A; background-color: transparent; text-decoration: none; font-weight: bold; }
-
-/* Especificidad: 0,0,1 */
 main { padding: 2rem; }
-
-/* Especificidad: 0,0,2 */
 main h2 { color: #8B1A1A; background-color: transparent; border-bottom: 2px solid #C4A747; padding-bottom: 0.5rem; margin-bottom: 1rem; }
-
-/* Especificidad: 0,0,2 */
 main h3 { color: #6B1414; background-color: transparent; margin: 1rem 0 0.5rem; }
-
-/* Especificidad: 0,0,2 */
 main p { margin-bottom: 1rem; }
-
-/* Especificidad: 0,0,2 */
 main ul, main ol, main dl { margin: 0.5rem 0 1rem 2rem; }
-
-/* Especificidad: 0,0,2 */
 main dt { font-weight: bold; color: #8B1A1A; background-color: transparent; margin-top: 0.5rem; }
 
-/* Especificidad: 0,0,2 */
 main table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; background-color: #FFFFFF; color: inherit; }
-
-/* Especificidad: 0,0,3 */
 main table caption { font-weight: bold; color: #8B1A1A; background-color: transparent; padding-bottom: 0.5rem; text-align: left; }
-
-/* Especificidad: 0,0,3 */
 main table th { background-color: #8B1A1A; color: #FFFFFF; padding: 0.8rem; text-align: left; }
-
-/* Especificidad: 0,0,3 */
 main table td { border: 1px solid #D4C5A0; padding: 0.8rem; }
-
-/* Especificidad: 0,1,3 */
 main table tr:nth-child(even) td { background-color: #EDE8DA; color: inherit; }
 
-/* Especificidad: 0,0,2 */
 main img, main video { max-width: 100%; height: auto; border-radius: 5px; margin-bottom: 1rem; }
-
-/* Especificidad: 0,0,2 */
 main article { background-color: #FFFFFF; color: inherit; border: 1px solid #D4C5A0; padding: 1.5rem; border-radius: 5px; margin-bottom: 1rem; }
-
-/* Especificidad: 0,0,3 */
 main input, main select, main textarea { width: 100%; padding: 0.6rem; border: 1px solid #D4C5A0; margin-bottom: 1rem; }
-
-/* Especificidad: 0,0,2 */
 main button { background-color: #8B1A1A; color: #FFFFFF; border: none; padding: 0.7rem 1.5rem; cursor: pointer; font-weight: bold; }
-
-/* Especificidad: 0,1,2 */
 main button:hover { background-color: #6B1414; color: inherit; }
 
-/* --- COMPONENTES ESPECÍFICOS (Carrusel, Noticias, Meteorología, Juego) --- */
+/* --- COMPONENTES ESPECÍFICOS USANDO ATRIBUTOS ARIA (Estándar y semánticos) --- */
 
-/* Especificidad: 0,1,1 */
-section[data-componente="carrusel"] { position: relative; background: #000; color: inherit; text-align: center; }
+/* Carrusel */
+section[aria-label="Fotos de Segovia"] { position: relative; background: #000; color: inherit; text-align: center; }
+section[aria-label="Fotos de Segovia"] img { height: 400px; object-fit: cover; margin: 0; }
+section[aria-label="Fotos de Segovia"] figcaption { position: absolute; bottom: 0; width: 100%; background: rgba(139,26,26,0.8); color: #FFF; padding: 0.5rem; font-weight: bold; }
+section[aria-label="Fotos de Segovia"] button { position: absolute; top: 40%; background: rgba(0,0,0,0.5); color: inherit; padding: 1rem; font-size: 1.5rem; }
+/* Reemplazo de data-dir="prev" y "next" por selectores estructurales */
+section[aria-label="Fotos de Segovia"] button:first-of-type { left: 0; }
+section[aria-label="Fotos de Segovia"] button:last-of-type { right: 0; }
+section[aria-label="Fotos de Segovia"] ol { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; list-style: none; padding: 0; margin: 0; }
+section[aria-label="Fotos de Segovia"] ol li { width: 12px; height: 12px; background-color: rgba(255, 255, 255, 0.5); color: inherit; border-radius: 50%; cursor: pointer; }
+section[aria-label="Fotos de Segovia"] ol li[aria-selected="true"] { background-color: #FFFFFF; color: inherit; }
 
-/* Especificidad: 0,1,2 */
-section[data-componente="carrusel"] img { height: 400px; object-fit: cover; margin: 0; }
+/* Noticias */
+section[aria-label="Noticias sobre Segovia"] article { display: flex; gap: 1rem; align-items: flex-start; }
 
-/* Especificidad: 0,1,2 */
-section[data-componente="carrusel"] figcaption { position: absolute; bottom: 0; width: 100%; background: rgba(139,26,26,0.8); color: #FFF; padding: 0.5rem; font-weight: bold; }
+/* Meteorología */
+section[aria-label="Tiempo actual en Segovia"] { background-color: #8B1A1A; color: #FFFFFF; padding: 2rem; text-align: center; border-radius: 5px; }
+section[aria-label="Tiempo actual en Segovia"] strong { font-size: 3rem; }
 
-/* Especificidad: 0,1,2 */
-section[data-componente="carrusel"] button { position: absolute; top: 40%; background: rgba(0,0,0,0.5); color: inherit; padding: 1rem; font-size: 1.5rem; }
+/* Juego */
+section[aria-label="Juego de preguntas sobre Segovia"] ol li label { display: block; padding: 0.8rem; border: 1px solid #D4C5A0; margin-bottom: 0.5rem; cursor: pointer; }
 
-/* Especificidad: 0,1,2 */
-section[data-componente="noticias"] article { display: flex; gap: 1rem; align-items: flex-start; }
+/* Validación del juego usando semántica (aria-invalid) en lugar de data-estado */
+section[aria-label="Juego de preguntas sobre Segovia"] ol li label[aria-invalid="false"] { background-color: #D4EDDA; color: inherit; border-color: #28A745; }
+section[aria-label="Juego de preguntas sobre Segovia"] ol li label[aria-invalid="true"] { background-color: #F8D7DA; color: inherit; border-color: #DC3545; }
 
-/* Especificidad: 0,1,2 */
-section[data-componente="tiempo-actual"] { background-color: #8B1A1A; color: #FFFFFF; padding: 2rem; text-align: center; border-radius: 5px; }
+/* Elementos genéricos o generados que requieren estilos estructurales simples */
+div > iframe { height: 350px; border: 1px solid #D4C5A0; margin-bottom: 1rem; width: 100%; }
 
-/* Especificidad: 0,1,3 */
-section[data-componente="tiempo-actual"] strong { font-size: 3rem; }
-
-/* Especificidad: 0,1,4 */
-section[data-componente="juego"] ol li label { display: block; padding: 0.8rem; border: 1px solid #D4C5A0; margin-bottom: 0.5rem; cursor: pointer; }
-
-/* Especificidad: 0,2,4 */
-section[data-componente="juego"] ol li label[data-estado="correcto"] { background-color: #D4EDDA; color: inherit; border-color: #28A745; }
-
-/* Especificidad: 0,2,4 */
-section[data-componente="juego"] ol li label[data-estado="incorrecto"] { background-color: #F8D7DA; color: inherit; border-color: #DC3545; }
-
-/* Especificidad: 0,0,1 */
-div[id^="mapa-"] { height: 350px; border: 1px solid #D4C5A0; margin-bottom: 1rem; }
-
-/* Especificidad: 0,0,1 */
 footer { background-color: #6B1414; color: #FFFFFF; text-align: center; padding: 1.5rem; }
-
-/* Especificidad: 0,0,2 */
 footer a { color: #C4A747; background-color: transparent; text-decoration: none; }
 
-/* --- ESTILOS EXTRA DE PHP (Sin IDs ni clases) --- */
+/* --- ESTILOS EXTRA DE PHP (Reservas) MEDIANTE RUTAS ESTRUCTURALES --- */
 
-/* Especificidad: 0,1,1 */
 p[role="alert"] { background-color: #D1ECF1; color: #0C5460; padding: 1rem; border: 1px solid #BEE5EB; margin-bottom: 1.5rem; border-radius: 4px; }
-/* ADVERTENCIA HERENCIA: color #0C5460 redefine el color principal. Contraste AAA correcto sobre #D1ECF1 */
 
-/* Especificidad: 0,1,1 */
-form[data-tipo="inline"] { display: inline; }
+main > p > form { display: inline; }
+main > p > form button { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
 
-/* Especificidad: 0,1,1 */
-button[data-tamano="pequeno"] { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
+input[type="number"] { width: 80px; display: inline-block; }
 
-/* Especificidad: 0,1,1 */
-input[data-tipo="cantidad"] { width: 80px; display: inline-block; }
+td > form > button { background-color: #DC3545; color: inherit; padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+td > form > button:hover { background-color: #C82333; color: inherit; }
 
-/* Especificidad: 0,1,1 */
-button[data-accion="peligro"] { background-color: #DC3545; color: inherit; padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+article > img:first-of-type { margin-right: 0.4rem; margin-bottom: 0.4rem; max-width: 200px; height: auto; display: inline-block; }
 
-/* Especificidad: 0,2,1 */
-button[data-accion="peligro"]:hover { background-color: #C82333; color: inherit; }
+/* =========================================================
+   Corrección estructural para el Mapa Interactivo
+   ========================================================= */
 
-/* Especificidad: 0,1,1 */
-img[data-tipo="foto-hito"] { margin-right: 0.4rem; margin-bottom: 0.4rem; max-width: 200px; height: auto; display: inline-block; }
-
-/* --- CORRECCIÓN BOTONES CARRUSEL --- */
-
-/* Especificidad: 0,2,2 */
-section[data-componente="carrusel"] button[data-dir="prev"] { 
-  left: 0; 
+/* Selecciona cualquier div cuyo ID empiece por "mapa-" (patrón estándar de mapas) */
+div[id^="mapa-"] {
+  display: block;
+  width: 100%;
+  min-width: 320px;    /* Evita de forma drástica que el ancho colapse a 0 en pantallas grandes */
+  height: 350px;       /* Forzamos la altura para asegurar su espacio en el DOM */
+  flex-grow: 1;        /* Si está dentro de un contenedor Flexbox, le obliga a expandirse */
+  flex-shrink: 0;      /* Impide por completo que los elementos de al lado lo aplasten o achiquen */
 }
 
-/* Especificidad: 0,2,2 */
-section[data-componente="carrusel"] button[data-dir="next"] { 
-  right: 0; 
-}
-
-/* --- ESTILOS INDICADORES (PUNTITOS) --- */
-
-/* Especificidad: 0,1,2 */
-section[data-componente="carrusel"] ol {
-  position: absolute;
-  bottom: 3rem; /* Para que quede justo encima del figcaption */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Especificidad: 0,1,3 */
-section[data-componente="carrusel"] ol li {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.5);
-  color: inherit;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Especificidad: 0,2,3 */
-section[data-componente="carrusel"] ol li[aria-selected="true"] {
-  background-color: #FFFFFF;
-  color: inherit;
+/* En caso de que el mapa cargue dentro de un iframe (por ejemplo, Google Maps incrustado) */
+main iframe {
+  display: block;
+  width: 100%;
+  min-width: 320px;
+  height: 350px;
+  flex-shrink: 0;
 }

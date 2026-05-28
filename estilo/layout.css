@@ -1,251 +1,109 @@
 /* =========================================================
-   estilo/layout.css — Posicionamiento y maquetación
-   Turismo Segovia — SEW 2025/26
-   Módulos usados: CSS Flexible Box Layout, CSS Grid Layout
+   estilo/layout.css — Estilos de Maquetación (Puros)
    ========================================================= */
 
-/* ---- ESTRUCTURA GENERAL (Flexbox columna) ---- */
-
-/* Especificidad: 0,0,1 */
+/* 1. Estructura general (Footer siempre al fondo de la pantalla) */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* ADVERTENCIA REDEFINICIÓN: propiedad display redefinida respecto a estilo.css
-     por necesidad de layout sticky footer con flexbox */
 }
 
-/* Especificidad: 0,0,1 */
 main {
-  flex: 1 0 auto;
+  flex: 1; /* Permite que el contenido principal empuje al footer hacia abajo */
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  /* ADVERTENCIA REDEFINICIÓN: max-width y margin sobreescritos en media queries — ver abajo */
+  margin: 0 auto; /* Centrado en pantallas grandes */
 }
 
-/* Especificidad: 0,0,1 */
-footer {
-  flex-shrink: 0;
-}
+/* ---------------------------------------------------------
+   2. Navegación
+   --------------------------------------------------------- */
 
-/* ---- NAVEGACIÓN PRINCIPAL (Flexbox fila) ---- */
-
-/* Especificidad: 0,0,2 */
-nav ul {
+/* Menú principal (Primer nav del body) */
+nav:first-of-type ul {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
-}
-
-/* ---- REJILLA DE PÁGINA PRINCIPAL (CSS Grid) ---- */
-
-/* Especificidad: 0,1,1 */
-main[data-pagina="inicio"] {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  align-items: center;
   gap: 0;
 }
 
-/* ---- REJILLA DE PREVISIÓN METEOROLÓGICA (CSS Grid) ---- */
-
-/* Especificidad: 0,1,2 */
-main section[data-componente="prevision"] {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-  /* ADVERTENCIA REDEFINICIÓN: grid-template-columns redefinido en media queries */
+nav:first-of-type ul li {
+  flex: 1 1 auto;
+  text-align: center;
 }
 
-/* ---- GRID DE RECURSOS TURÍSTICOS (CSS Grid) ---- */
+/* Migas de pan / Breadcrumbs (Segundo nav del body) */
+nav:nth-of-type(2) ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-/* Especificidad: 0,1,1 */
-section[data-componente="recursos-grid"] {
+/* ---------------------------------------------------------
+   3. Distribución de componentes mediante Semántica / Jerarquía
+   --------------------------------------------------------- */
+
+/* Noticias: Diseño en cuadrícula (Grid responsive) */
+section[aria-label="Noticias sobre Segovia"] {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+section[aria-label="Noticias sobre Segovia"] article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Carrusel: Centrado de elementos */
+section[aria-label="Fotos de Segovia"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cuadrícula de Reservas Turísticas (El primer div hijo directo de main en reservas.php) */
+main > div:first-of-type {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Alineación de las tarjetas de reserva */
+main > div:first-of-type > article {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empujar los formularios de reserva hacia la parte inferior de la tarjeta */
+main > div:first-of-type > article > form {
+  margin-top: auto; 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Formularios en línea pequeños (ej. Cerrar Sesión) */
+main > p > form {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Panel de usuario (Es el único <header> hijo directo de <main> en todo el proyecto) */
+main > header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-/* ---- LAYOUT DE ARTÍCULO DE NOTICIAS (Flexbox) ---- */
-
-/* Especificidad: 0,1,2 */
-section[data-componente="noticias"] article {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: flex-start;
-  /* ADVERTENCIA REDEFINICIÓN: flex-direction cambia en móvil */
-}
-
-/* ---- LAYOUT DE ARTÍCULO DE RECURSO TURÍSTICO (Flexbox) ---- */
-
-/* Especificidad: 0,1,3 */
-section[data-componente="recursos-grid"] article {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* ---- OPCIONES DE FORMULARIO (Flexbox) ---- */
-
-/* Especificidad: 0,1,2 */
-main fieldset[data-layout="botones"] {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: flex-start;
-  border: none;
-  padding: 0.5rem 0;
-}
-
-/* ---- CONTENEDOR CENTRADO PARA FORMULARIOS ---- */
-
-/* Especificidad: 0,1,1 */
-main[data-pagina="reservas"] {
-  max-width: 900px;
-}
-
-/* ====================================================
-   MEDIA QUERIES — Adaptabilidad
-   ==================================================== */
-
-/* ---- TABLETA: máx 900px ---- */
-@media (max-width: 900px) {
-
-  /* ADVERTENCIA REDEFINICIÓN: grid-template-columns redefinido por media query */
-  /* Especificidad: 0,1,2 */
-  main section[data-componente="prevision"] {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: grid-template-columns redefinido por media query */
-  /* Especificidad: 0,1,1 */
-  section[data-componente="recursos-grid"] {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: padding redefinido por media query */
-  /* Especificidad: 0,0,1 */
-  main {
-    padding: 1.2rem 1.2rem;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: height redefinido por media query */
-  /* Especificidad: 0,1,2 */
-  section[data-componente="carrusel"] img {
-    height: 300px;
-  }
-}
-
-/* ---- MÓVIL: máx 600px ---- */
-@media (max-width: 600px) {
-
-  /* ADVERTENCIA REDEFINICIÓN: font-size redefinido por media query */
-  /* Especificidad: 0,0,2 */
-  header h1 {
-    font-size: 1.5rem;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: padding redefinido por media query */
-  /* Especificidad: 0,0,1 */
-  header {
-    padding: 1rem;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: padding redefinido por media query */
-  /* Especificidad: 0,0,4 */
-  nav ul li a {
-    padding: 0.6rem 0.7rem;
-    font-size: 0.78rem;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: padding redefinido por media query */
-  /* Especificidad: 0,0,1 */
-  main {
-    padding: 1rem 0.8rem;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: grid-template-columns redefinido por media query */
-  /* Especificidad: 0,1,2 */
-  main section[data-componente="prevision"] {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: grid-template-columns redefinido por media query */
-  /* Especificidad: 0,1,1 */
-  section[data-componente="recursos-grid"] {
-    grid-template-columns: 1fr;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: height redefinido por media query */
-  /* Especificidad: 0,1,2 */
-  section[data-componente="carrusel"] img {
-    height: 200px;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: flex-direction redefinido por media query */
-  /* Especificidad: 0,1,2 */
-  section[data-componente="noticias"] article {
-    flex-direction: column;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: width y height redefinidos por media query */
-  /* Especificidad: 0,1,3 */
-  section[data-componente="noticias"] article img {
-    width: 100%;
-    height: 160px;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: font-size redefinido por media query */
-  /* Especificidad: 0,1,3 */
-  section[data-componente="juego"] article p {
-    font-size: 1rem;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: height redefinido por media query */
-  /* Especificidad: 0,0,1 */
-  div[id^="mapa-"] {
-    height: 250px;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: font-size redefinido por media query */
-  /* Especificidad: 0,0,2 */
-  main h2 {
-    font-size: 1.4rem;
-  }
-}
-
-/* ---- IMPRESIÓN ---- */
-@media print {
-
-  /* ADVERTENCIA REDEFINICIÓN: display redefinido por media query de impresión */
-  /* Especificidad: 0,0,1 */
-  nav {
-    display: none;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: display redefinido por media query de impresión */
-  /* Especificidad: 0,1,1 */
-  nav[aria-label="breadcrumb"] {
-    display: none;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: background y color redefinidos por media query de impresión */
-  /* Especificidad: 0,0,1 */
-  body {
-    background-color: #fff;
-    color: #000;
-    font-size: 12pt;
-  }
-
-  /* ADVERTENCIA REDEFINICIÓN: background y color redefinidos por media query de impresión */
-  /* Especificidad: 0,0,1 */
-  header {
-    background-color: #fff;
-    color: #000;
-  }
+/* Quitamos el margen inferior por defecto del párrafo para que quede perfectamente alineado con el botón */
+main > header > p {
+  margin-bottom: 0; 
 }
